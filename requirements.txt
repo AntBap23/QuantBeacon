@@ -1,0 +1,9 @@
+discord.py>=2.4.0
+yfinance>=0.2.54
+requests>=2.32.3
+pandas>=2.2.3
+ta>=0.11.0
+transformers>=4.48.0
+textblob>=0.18.0.post0
+python-dotenv>=1.0.1
+aiohttp>=3.11.11
