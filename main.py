@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from commands.analyze import handle_analyze
 from commands.compare import handle_compare
 from commands.quant import handle_quant
+from utils.branding import BOT_NAME
 from utils.embeds import build_help_embed
 
 load_dotenv()
@@ -19,7 +20,7 @@ DISCORD_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 GUILD_ID = os.getenv("DISCORD_GUILD_ID")
 
 
-class MarketIntelBot(discord.Client):
+class QuantBeaconBot(discord.Client):
     def __init__(self) -> None:
         intents = discord.Intents.default()
         super().__init__(intents=intents)
@@ -30,16 +31,16 @@ class MarketIntelBot(discord.Client):
             guild = discord.Object(id=int(GUILD_ID))
             self.tree.copy_global_to(guild=guild)
             await self.tree.sync(guild=guild)
-            logging.info("Synced slash commands to guild %s", GUILD_ID)
+            logging.info("%s synced slash commands to guild %s", BOT_NAME, GUILD_ID)
         else:
             await self.tree.sync()
-            logging.info("Synced global slash commands")
+            logging.info("%s synced global slash commands", BOT_NAME)
 
     async def on_ready(self) -> None:
-        logging.info("Bot online as %s (%s)", self.user, self.user.id if self.user else "unknown")
+        logging.info("%s is online as %s (%s)", BOT_NAME, self.user, self.user.id if self.user else "unknown")
 
 
-bot = MarketIntelBot()
+bot = QuantBeaconBot()
 
 
 @bot.tree.command(name="analyze", description="Quick snapshot with price, news, and sentiment")
@@ -73,4 +74,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

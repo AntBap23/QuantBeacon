@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import discord
 
+from utils.branding import BOT_NAME, BOT_TAGLINE
 from utils.types import AnalysisPayload, QuantResult
 
 
@@ -48,7 +49,7 @@ def _fmt_rsi(value: float | None) -> str:
 def build_analyze_embed(payload: AnalysisPayload) -> discord.Embed:
     snapshot = payload.snapshot
     embed = discord.Embed(
-        title=f"Market Snapshot — {snapshot.symbol}",
+        title=f"{BOT_NAME} Snapshot — {snapshot.symbol}",
         description=snapshot.display_name,
         color=discord.Color.blurple(),
     )
@@ -98,13 +99,13 @@ def build_analyze_embed(payload: AnalysisPayload) -> discord.Embed:
             inline=False,
         )
 
-    embed.set_footer(text="Informational only. Not financial advice.")
+    embed.set_footer(text=f"{BOT_TAGLINE} Informational only. Not financial advice.")
     return embed
 
 
 def build_quant_embed(result: QuantResult) -> discord.Embed:
     embed = discord.Embed(
-        title=f"Quant Report — {result.symbol}",
+        title=f"{BOT_NAME} Report — {result.symbol}",
         description=result.display_name,
         color=discord.Color.green() if result.composite_score >= 60 else discord.Color.orange(),
     )
@@ -145,7 +146,7 @@ def build_quant_embed(result: QuantResult) -> discord.Embed:
             inline=False,
         )
 
-    embed.set_footer(text="Not financial advice. DYOR.")
+    embed.set_footer(text=f"{BOT_TAGLINE} Not financial advice. DYOR.")
     return embed
 
 
@@ -186,7 +187,8 @@ def build_compare_embed(left: QuantResult, right: QuantResult) -> discord.Embed:
 
 def build_help_embed() -> discord.Embed:
     embed = discord.Embed(
-        title="Market Intelligence Bot Commands",
+        title=f"{BOT_NAME} Commands",
+        description=BOT_TAGLINE,
         color=discord.Color.blue(),
     )
     embed.add_field(name="/analyze <symbol>", value="Quick snapshot with price, news, and sentiment.", inline=False)

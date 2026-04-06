@@ -1,9 +1,12 @@
-# Market Intelligence Discord Bot
+# QuantBeacon
 
-A Railway-ready Discord bot that pulls live stock and crypto market data, summarizes recent business news, and delivers AI-assisted quant signals through slash commands and Discord embeds.
+AI market signals in Discord.
+
+QuantBeacon is a Railway-ready Discord bot that pulls live stock and crypto market data, summarizes recent business news, and delivers AI-assisted quant signals through slash commands and Discord embeds.
 
 ## Features
 
+- Branded Discord embeds and slash commands built around the QuantBeacon experience
 - `/analyze <symbol>` for a quick market snapshot with price, 52-week range, news, sentiment, and risk context
 - `/quant <symbol>` for a technical and sentiment-driven quant report with a 0-100 composite score
 - `/compare <symbol1> <symbol2>` for side-by-side quant comparisons
@@ -22,7 +25,7 @@ A Railway-ready Discord bot that pulls live stock and crypto market data, summar
 ## Project Structure
 
 ```text
-market-intel-bot/
+QuantBeacon/
 ├── main.py
 ├── commands/
 ├── data/
@@ -76,7 +79,7 @@ Notes:
 2. Create your Discord bot at `discord.com/developers`.
 3. Get a free NewsAPI key.
 4. Push the project to GitHub.
-5. Connect Railway to the GitHub repo.
+5. Connect Railway to the `QuantBeacon` GitHub repo in Railway.
 6. Add the environment variables in the Railway dashboard.
 7. Railway auto-builds and deploys the bot.
 8. Invite the bot to your Discord server.
@@ -112,7 +115,7 @@ worker: python main.py
 
 ## GitHub + Railway Flow
 
-Pushes to your GitHub `main` branch can trigger Railway redeploys automatically once the repo is linked in Railway. No secrets are stored in code; everything is pulled from environment variables with `os.getenv()` and `python-dotenv`.
+Pushes to your GitHub `main` branch can trigger Railway redeploys automatically once the QuantBeacon repo is linked in Railway. No secrets are stored in code; everything is pulled from environment variables with `os.getenv()` and `python-dotenv`.
 
 ## How the Bot Works
 
@@ -128,7 +131,7 @@ Pushes to your GitHub `main` branch can trigger Railway redeploys automatically 
 
 ## Invite and Self-Hosting Notes
 
-Anyone can self-host by setting the required environment variables and running the bot on any Python 3.11-compatible host. Railway is the easiest path because the included deployment files require no extra platform-specific edits beyond adding secrets.
+Anyone can self-host QuantBeacon by setting the required environment variables and running the bot on any Python 3.11-compatible host. Railway is the easiest path because the included deployment files require no extra platform-specific edits beyond adding secrets.
 
 ## Contributing
 
